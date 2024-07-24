@@ -14,7 +14,7 @@ int main() {
 
 
    mat_free(matrix);
-    
+   printf("lalalala");
 }
 
 
