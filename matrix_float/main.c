@@ -10,11 +10,22 @@ int main() {
    mat_push(matrix, 1, 1, 6.5);
    mat_push(matrix, 1, 2, 7.5);
 
-   mat_print(matrix);
 
+   float *x = mat_at(matrix, 0,3);
+
+   float *y = mat_at(matrix, 1,2);
+
+   if (y != NULL){
+
+      printf("%2.2f \n", *y);
+   }
+  
+
+   mat_print(matrix);
+   
 
    mat_free(matrix);
-   printf("lalalala");
+  
 }
 
 

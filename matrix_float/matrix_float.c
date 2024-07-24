@@ -71,21 +71,24 @@ void mat_print(Mat *xs){
 }
 
 
+float* mat_at(Mat* xs, size_t i, size_t j) {
+    if (i >= xs->rows || j >= xs->cols) {
+        printf("Indices are out of range\n");
+        return NULL;
+    }
 
-float *vec_at(Mat *xs, size_t i, size_t j){
-  
- 
- 
+    float* result = &(xs->data[i * xs->cols + j]);
+    return result ;
+}
 
-};
 
 
 size_t mat_rows(Mat *xs){
   return xs->rows;
-};
+}
 
 
 size_t mat_cols(Mat *xs){
   return xs->cols;
-};
+}
 
