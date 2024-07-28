@@ -156,5 +156,5 @@ Vec *mat_vec_mult(Mat* mat, Vec* vec){
 
 }
 
-Mat *mat_vec_mult(Mat* mat, Mat* vec)
+Mat *mat_vec_mult(Mat* mat, Mat* vec){}
 
