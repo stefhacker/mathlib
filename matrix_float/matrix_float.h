@@ -3,6 +3,8 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include "../vector_float/vector_float.h"
+
 
 
 struct Mat;
@@ -27,6 +29,14 @@ void mat_print(Mat *xs);
 size_t mat_rows(Mat *xs);
 
 size_t mat_cols(Mat *xs);
+
+Mat *mat_zero(size_t n, size_t m);
+
+Mat *mat_id(size_t n);
+
+Mat *mat_add(Mat* x_1, Mat* x_2);
+
+Vec* mat_vec_mult(Mat* mat, Vec* vec);
 
 
 

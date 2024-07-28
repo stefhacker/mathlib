@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "matrix_float.h"
 
-#include "./matrix_float.h"
 
 struct Mat {
   float *data;       /* dynamic memory area containing the integers */
@@ -91,4 +91,70 @@ size_t mat_rows(Mat *xs){
 size_t mat_cols(Mat *xs){
   return xs->cols;
 }
+
+Mat *mat_zero(size_t n, size_t m){
+  
+  Mat* zero = mat_new(n, m);
+  for(int i = 0; i < n; i++){
+    for(int j; j < m; j++){
+      mat_push(zero, i,j, 0);
+    }
+
+  }
+  return zero;
+
+}
+
+Mat *mat_id(size_t n){
+  
+  Mat* identity = mat_zero(n, n);
+  for(int i = 0; i < n; i++){
+    
+    mat_push(identity, i ,i ,1);
+  }
+  return identity;
+
+}
+
+Mat *mat_add(Mat* x_1, Mat* x_2){
+  if(mat_cols(x_1) != mat_cols(x_2)){
+    printf("columns do not align");
+    return NULL;
+  }
+
+   if(mat_rows(x_1) != mat_rows(x_2)){
+    printf("rows do not align");
+    return NULL;
+  }
+
+
+  Mat* add = mat_new(mat_rows(x_1), mat_cols(x_1));
+  for(int i = 0; i < mat_rows(x_1); i++){
+    for(int j = 0; j < mat_cols(x_1); j++){
+      mat_push(add, i,j, x_1->data[i * x_1->cols + j] + x_2->data[i * x_1->cols + j] );
+    }
+
+  }
+  return add;
+
+}
+
+Vec *mat_vec_mult(Mat* mat, Vec* vec){
+
+  if(mat_cols(mat) != vec_length(vec)){
+    printf("dimensions do not align");
+  }
+  Vec* result = vec_new();
+   for (size_t i = 0; i < mat_rows(mat); i++) {
+        float component = 0;
+        for (size_t j = 0; j < mat_cols(mat); j++) {
+             component += *mat_at(mat, i, j) * *vec_at(vec, j);
+        }
+        vec_push(result, component);
+    }
+    return result;
+
+}
+
+Mat *mat_vec_mult(Mat* mat, Mat* vec)
 
