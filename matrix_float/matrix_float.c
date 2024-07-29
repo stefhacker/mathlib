@@ -143,6 +143,7 @@ Vec *mat_vec_mult(Mat* mat, Vec* vec){
 
   if(mat_cols(mat) != vec_length(vec)){
     printf("dimensions do not align");
+    return NULL;
   }
   Vec* result = vec_new();
    for (size_t i = 0; i < mat_rows(mat); i++) {
@@ -156,5 +157,26 @@ Vec *mat_vec_mult(Mat* mat, Vec* vec){
 
 }
 
-Mat *mat_vec_mult(Mat* mat, Mat* vec){}
+Mat *mat_mat_mult(Mat* mat1, Mat* mat2){
+
+  if(mat_cols(mat1) != mat_rows(mat2)){
+    printf("rows of first matrix do not align with second");
+    return NULL;
+  }
+  Mat* result = mat_new(mat_rows(mat1), mat_cols(mat2));
+  for (size_t i = 0; i < mat_rows(mat1); i++) {
+    
+    for (size_t j = 0; j < mat_cols(mat2); j++){
+
+      float component = 0;
+      for (size_t k = 0; k < mat_rows(mat2); k++){
+        component += *mat_at(mat1 ,i, k) * *mat_at(mat2, k, j);
+      }
+    mat_push(result, i, j, component);
+    }
+
+  }
+  return result;
+
+}
 

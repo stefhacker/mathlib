@@ -38,6 +38,8 @@ Mat *mat_add(Mat* x_1, Mat* x_2);
 
 Vec* mat_vec_mult(Mat* mat, Vec* vec);
 
+Mat *mat_mat_mult(Mat* mat1, Mat* mat2);
+
 
 
 

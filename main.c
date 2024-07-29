@@ -7,10 +7,10 @@
 int main() {
     size_t n = 3;
     Mat* mat = mat_new(n, n);
-    Vec* vec = vec_new();
-    vec_push(vec,1);
-    vec_push(vec,2);
-    vec_push(vec,3);
+    Mat* vec = mat_new(3,1);
+    mat_push(vec, 0, 0, 1);
+    mat_push(vec, 1 ,0, 2);
+    mat_push(vec, 2, 0 ,3);
 
 
     // Initialize the matrix using mat_push
@@ -22,16 +22,16 @@ int main() {
     
     mat_print(mat);
     
-    vec_print(vec);
+    mat_print(vec);
     
-    Vec* add = mat_vec_mult(mat,vec);
+    Mat* add = mat_mat_mult(mat,vec);
     if (add != NULL){
-        vec_print(add);
+        mat_print(add);
     }
 
     mat_free(mat);
-    vec_free(vec);
-    vec_free(add);
+    mat_free(vec);
+    mat_free(add);
 
     return 0;
 }
