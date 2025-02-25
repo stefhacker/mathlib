@@ -56,7 +56,8 @@
         "iomanip": "cpp",
         "sstream": "cpp",
         "cinttypes": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "vector_float.h": "c"
     },
     "cmake.sourceDirectory": "C:/Users/stefh/mathlib/music"
 }

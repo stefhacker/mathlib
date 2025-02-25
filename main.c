@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "matrix_float/matrix_float.h"
-#include "vector_float/vector_float.h"
+#include "matrix_float.h"
+#include "vector_float.h"
 
 
 
